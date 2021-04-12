@@ -104,8 +104,6 @@ hs.hotkey.bind({"alt, ctrl"}, "]", function()
         if windows[#windows] then
             windows[#windows]:focus()
         end
-    else
-        hs.application.launchOrFocus("Google Chrome")
     end
 end)
 
