@@ -6,6 +6,21 @@ local function directoryLaunchKeyRemap(mods, key, dir)
     end)
 end
 
+local function activateOrLaunch(app)
+    local app = hs.application.get(app)
+    if app then
+        if not app:mainWindow() then
+            app:selectMenuItem({app, "New OS window"})
+        elseif app:isFrontmost() then
+            app:hide()
+        else
+            app:activate()
+        end
+    else
+        hs.application.launchOrFocus(app)
+    end
+end
+
 directoryLaunchKeyRemap({"alt, ctrl"}, "1", "/Users/Kyle/Downloads") 
 directoryLaunchKeyRemap({"alt, ctrl"}, "2", "/Users/kyle/Movies") 
 directoryLaunchKeyRemap({"alt, ctrl"}, "3", "/Users/Kyle/Documents") 
@@ -18,63 +33,19 @@ directoryLaunchKeyRemap({"alt, ctrl"}, "9", "")
 directoryLaunchKeyRemap({"alt, ctrl"}, "0", "") 
 
 hs.hotkey.bind({"alt, ctrl"}, "q", function()
-    local app = hs.application.get("discord")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"discord", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("discord")
-    end
+    activateOrLaunch("discord")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "z", function()
-    local app = hs.application.get("zoom.us")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"zoom.us", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("zoom.us")
-    end
+    activateOrLaunch("zoom.us")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "w", function()
-    local app = hs.application.get("WhatsApp")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"WhatsApp", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("WhatsApp")
-    end
+    activateOrLaunch("WhatsApp")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "e", function()
-    local app = hs.application.get("Telegram")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Telegram", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Telegram")
-    end
+    activateOrLaunch("Telegram")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "c", function()
@@ -82,63 +53,19 @@ hs.hotkey.bind({"alt, ctrl"}, "c", function()
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "r", function()
-    local app = hs.application.get("Slack")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Slack", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Slack")
-    end
+    activateOrLaunch("Slack")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "f", function()
-    local app = hs.application.get("Preview")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Preview", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Preview")
-    end
+    activateOrLaunch("Preview")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "v", function()
-    local app = hs.application.get("FileZilla")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"FileZilla", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("FileZilla")
-    end
+    activateOrLaunch("FileZilla")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "t", function()
-    local app = hs.application.get("kitty")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"kitty", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("kitty")
-    end
+    activateOrLaunch("kitty")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "y", function()
@@ -150,93 +77,23 @@ hs.hotkey.bind({"alt, ctrl"}, "u", function()
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "j", function()
-    local app = hs.application.get("Google Chrome")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Google Chrome", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Google Chrome")
-    end
-end)
-
-hs.hotkey.bind({"alt, ctrl"}, "j", function()
-    local app = hs.application.get("Google Chrome")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Google Chrome", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Google Chrome")
-    end
+    activateOrLaunch("Google Chrome")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "m", function()
-    local app = hs.application.get("Mathematica")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Mathematica", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Mathematica")
-    end
+    activateOrLaunch("Mathematica")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "k", function()
-    local app = hs.application.get("qutebrowser")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"qutebrowser", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("qutebrowser")
-    end
+    activateOrLaunch("qutebrowser")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "-", function()
-    local app = hs.application.get("Calendar")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Calendar", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Calendar")
-    end
+    activateOrLaunch("Calendar")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "'", function()
-    local app = hs.application.get("Anki")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Anki", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Anki")
-    end
+    activateOrLaunch("Anki")
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "]", function()
@@ -253,16 +110,5 @@ hs.hotkey.bind({"alt, ctrl"}, "]", function()
 end)
 
 hs.hotkey.bind({"alt, ctrl"}, "=", function()
-    local app = hs.application.get("Trello")
-    if app then
-        if not app:mainWindow() then
-            app:selectMenuItem({"Trello", "New OS window"})
-        elseif app:isFrontmost() then
-            app:hide()
-        else
-            app:activate()
-        end
-    else
-        hs.application.launchOrFocus("Trello")
-    end
+    activateOrLaunch("Trello")
 end)
