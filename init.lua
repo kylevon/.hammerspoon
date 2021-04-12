@@ -6,18 +6,18 @@ local function directoryLaunchKeyRemap(mods, key, dir)
     end)
 end
 
-local function activateOrLaunch(app)
-    local app = hs.application.get(app)
+local function activateOrLaunch(appName)
+    local app = hs.application.get(appName)
     if app then
         if not app:mainWindow() then
-            app:selectMenuItem({app, "New OS window"})
+            app:selectMenuItem({appName, "New OS window"})
         elseif app:isFrontmost() then
             app:hide()
         else
             app:activate()
         end
     else
-        hs.application.launchOrFocus(app)
+        hs.application.launchOrFocus(appName)
     end
 end
 
